@@ -1,0 +1,113 @@
+paging & lazyload nguyên lý
+giá trị nhỏ nhất là lớn nhất trong page là offset & limit, getOffset(), getLimit các phương thức của Paging của JPA
+tính offset và limit dựa trên page và size, ví du page =1, size =10, offset = 1, limit = 10
+page =2, size =10, offset = 11, limit = 20
+sử dụng jpa dùng các phương thức, nhờ hibernate tương tác với DB tạo ra các câu lệnh SQL
+getSort() sắp xếp lại dữ liệu dựa trên thứ tự các column
+repository là interface, các phương thức của nó được implements by hibernate
+các phương thức tùy biến trong repository find_by_ chỉ cần khai báo k cần viết phương thức
+
+Validate
+String_Not Blank_""
+List_Not Empty_[ ]
+Object_NotNull_null
+
+dto-data transform object- tính đóng gói
+phuong thuc trong service co bước validate nhung input trong dto, sau do convert dto sang entity, ví dụ nhap 10 truong trong dto chi luu 5 truong vào database
+request dto
+response dto trả về những trường của entity muốn cho view biết, ví dụ k hiển thị password...
+
+nhung@validation k dat trong entity ma dat trong class DTO
+làm request dto, response dto, converter, trong controller tất cả k có entity mà chỉ dùng DTO
+
+trong ứng dụng giữa FrondEnd và BackEnd request và response với nhau chỉ bằng dto bằng internet hoặc LAN
+tan cong CORS, CFRS
+
+Annotation @Valid sẽ đảm bảo validate toàn bộ đối tượng. Tuy nhiên, sẽ không phù hợp khi cần validate một phần của đối tượng.
+
+đối với những thao tác validate cơ bản, chúng ta sẽ sử dụng annotation @Valid trong các lệnh gọi phương thức. Mặt khác, đối với thao tác validate theo nhóm, chúng ta sẽ cần sử dụng annotation @Validated của Spring. Các @Valid  annotation cũng cần thiết để validate các thuộc tính lồng bên trong
+
+
+su dung Annotation thi chi can @ trong model, @Valid hoặc @Validate trong phương thức Post Controller(Validate cần tạo 1 interface BasicInfo), thẻ trả về message trong view
+Nếu implement Validator trong model thì cần tạo @Bean trong Config, validation-message.properties trong resource
+
+hasErrors là phương thức trả về giá trị boolean cho biết có lỗi xảy ra trong quá trình liên kết và kiểm tra dữ liệu hay không.
+sử dụng bindingResult.hasFieldErrors("fieldName") để kiểm tra xem có lỗi xảy ra cho trường với tên "fieldName" hay không.
+
+CrudRepository là interface cha của PagingAndSortingRepository,JpaRepository
+Trong JpaRepository, có thể sử dụng các tên phương thức được đặt tên theo quy ước nhất định để tự động tạo các truy vấn JPA
+
+
+để sd Dto-thư viện-Cấu hình ModelMapper-@Componen Dto,repository vẫn entity, sang service là Dto, sửa class service
+
+ctrl + shift + esc => đóng app
+header, pathvariable, requestparam,
+
+String Builder toi uu hơn String, url.toString(). respond chua header
+
+truoc khi vao controller tat ca cac request bi chan boi filter
+authorization: Bearer 65d7gew87f8e... chuoi sau bearer là token
+header bao gồm các thành phần content-type, authorization, secret-id... gọi là meta data-siêu dữ liệu, nó giống như những thông tin config, k nằm trong request body vì request body cung cấp những thông tin thay doi theo phien
+
+search mutipart file hung file gui đến, nhung file he thong thuong duoc luu trong 1 ben thu 3 thue kho chua, database chi chua duong link
+(Frondend gui file toi backend, backend gui file toi  "ex: amazonS3", amazonS3 gui link về BE, BE gui link FE. sau nay FE gui link den AmazonS3 và get về noi dung, AmazonS3 phai duoc hosting tren mang)
+
+dulieu case luu trong file static, hoac trong database "save binary file to database"
+
+response trong RestTemplate da duoc chuyen tu JSON ma hoa khi gui tu con service server(User) sang object
+
+token, HMAC RSA JWT
+
+Tìm hiểu Buider Pattern là gì?
+Builder Pattern là một mẫu thiết kế phần mềm (design pattern) trong lập trình hướng đối tượng (OOP) được sử dụng để xây dựng các đối tượng phức tạp bằng cách tách chúng thành các phần nhỏ hơn và xây dựng từng phần một để tạo ra đối tượng cuối cùng. Nó cho phép tạo ra nhiều biến thể của đối tượng với các thuộc tính khác nhau mà không cần viết nhiều mã code.
+
+Builder Pattern được sử dụng khi ta muốn tạo ra các đối tượng phức tạp, có nhiều thuộc tính và mỗi thuộc tính có thể có giá trị mặc định hoặc không. Nói cách khác, Builder Pattern cho phép ta tạo ra các đối tượng theo cách mà chúng ta muốn, bằng cách chọn các thuộc tính cần thiết, hoặc sử dụng các giá trị mặc định nếu chúng ta không muốn chọn giá trị cụ thể.
+
+Một ứng dụng phổ biến của Builder Pattern là trong việc xây dựng đối tượng thông qua các phương thức setter (setXxx), để tránh việc phải gọi nhiều phương thức setter khác nhau để thiết lập các thuộc tính của đối tượng. Thay vào đó, Builder Pattern cho phép ta thiết lập các thuộc tính một cách tuần tự và trực quan hơn.
+
+
+khác nhau giữa PathVariable và RequestParam, trên đường dẫn RequestParam có thể có hoặc không, RequestBody chuyển dữ liệu lớn tối đa 8M không đặt trên đường dẫn
+
+co che gui mail xac nhan Java Multi-threading) 
+
+profiles-local-dev-product......
+
+public/index.html ->src/index.js -> App.js
+
+debug F12 vào source, shift + F5 chạy debug
+
+reactjs sử dụng CSR Client-Side Rendering, sử dụng framwork Node.js sử dụng SSR Server-Side Rendering
+
+React destructuring (hoặc "React component destructuring") là một cú pháp trong React cho phép bạn trích xuất các thành phần (props) của một component thành các biến riêng lẻ
+
+các kiến trúc: monolithic, microservice(MSA), service overiented(SOA)
+kiểu SOA là tách App ra FE và BE,  FE sử dụng thư viện jQuery, kiến trúc Ajax gọi là 1 website có nhiều webpage 
+FE sử dụng thư viện ReactJS, thư viện axios hay framework Angular, thư viện axios thì SOA gọi là 1 web app(Single Page App) chỉ có 1 trang duy nhất là index (chứa component App) gồm nhiều component
+
+Cây Dom thật class = "",  cây DOM ảo className = "", append virtual DOM 
+
+Redux Toolkit_________________________________________________________________
+
+View gửi sự kiện tới Action Creater qua middleware, tới store, store có root proce
+
+File login dùng hook useDispatch trong phương thức 
+
+https://github.com/ed-roh/react-admin-dashboard
+https://github.com/adrianhajdin/project_chat_application.git
+
+https://cloudinary.com/ lưu ảnh
+airtable
+firebase
+
+deploy trên heroku, vercel
+không thể tạo 1 instance(đối tượng) từ interface mà từ class
+
+
+đăng ký (xác thực email(OTP, one time password)->băm mật khẩu->lưu dữ liệu xuống database
+khi login nhập mật khẩu bản rõ (plain text) -> băm ra cipher text, đem ra so sánh với database
+
+từ (username+ thời gian tồn tại+ key+thời gian tạo...) đem mã hóa bằng RSA(2 chiều, mã hóa & giải mã) tạo ra chuỗi token
+khi gửi bất kì request luôn gửi thêm token(trong header) => filter(tạo ra trong class extends OncePerRequestFilter) => Controller
+
+
+access token và refresh token (access token có thời gian sống ngắn 10-15 phút, refresh token có thời gian sống dài 1-2 ngày, thời gian sống của access token được tính từ thời điểm cuối cùng sử dụng nó, khi access token hết thời hạn thì sẽ ngầm định gừi đi 1 refresh token, token được lưu trong cache)
